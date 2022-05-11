@@ -38,6 +38,7 @@
             android:layout_width="100dp"
             android:layout_height="87dp"
             android:layout_weight="1"
+            android:onClick="setOperatorPlus"
             android:text="+" />
 
         <Button
@@ -46,6 +47,7 @@
             android:layout_height="87dp"
             android:layout_weight="1"
             android:backgroundTint="#F8F8F8"
+            android:onClick="setOperatorMinus"
             android:shadowColor="#FFFFFF"
             android:text="-"
             android:textColor="#090909" />
@@ -55,6 +57,7 @@
             android:layout_width="100dp"
             android:layout_height="87dp"
             android:layout_weight="1"
+            android:onClick="setOperatorMulti"
             android:text="*" />
     </LinearLayout>
 
@@ -89,6 +92,7 @@
             android:layout_weight="1"
             android:background="#00FDFDFD"
             android:backgroundTint="#AA5050"
+            android:onClick="setOperatorDivide"
             android:text="/"
             android:textColor="#040404" />
     </LinearLayout>
