@@ -31,8 +31,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getResult(View view){
-        Double firstNumber = Double.parseDouble(firstNumberTxt.getText().toString());
-        Double secondNumber = Double.parseDouble(secondNumberTxt.getText().toString());
+        Double firstNumber = 0.0;
+        Double secondNumber = 0.0;
+        try {
+            firstNumber = Double.parseDouble(firstNumberTxt.getText().toString());
+            secondNumber = Double.parseDouble(secondNumberTxt.getText().toString());
+        }catch (NumberFormatException e){
+            Toast.makeText(this, "No Number Fields can be blank", Toast.LENGTH_SHORT).show();
+            firstNumber = 0.0;
+            secondNumber = 0.0;
+        }
         double result = 0;
 
         switch (operator){
@@ -46,14 +54,19 @@ public class MainActivity extends AppCompatActivity {
                 result = calculator.multiply(firstNumber, secondNumber);
                 break;
             case "/":
-                result = calculator.divide(firstNumber, secondNumber);
-                break;
+                if(secondNumber == 0){
+                    Toast.makeText(this, "Cannot Divide By 0", Toast.LENGTH_SHORT).show();
+                    result = 0;
+                    break;
+                }else {
+                    result = calculator.divide(firstNumber, secondNumber);
+                    break;
+                }
             default:
                 Toast.makeText(this, "Invalid Operation", Toast.LENGTH_SHORT).show();
                 result = 0;
                 break;
         }
-
 
         resultTextView.setText(String.valueOf(result));
     }
@@ -81,4 +94,5 @@ public class MainActivity extends AppCompatActivity {
     public void setOperator(String operator) {
         this.operator = operator;
     }
+
 }
